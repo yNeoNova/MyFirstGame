@@ -13,14 +13,14 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: haxelib v4.2.0
-      run: |
-        haxelib --global update haxelib
-
     - name: Set up Haxe
       uses: krdlab/setup-haxe@v1.5.1
       with:
         haxe-version: 4.3.6
+
+    - name: Haxelib v4.2.0
+      run: |
+        haxelib --global update haxelib
 
     - name: Install Haxelibs
       run: |
