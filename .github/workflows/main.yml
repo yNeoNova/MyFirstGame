@@ -1,0 +1,43 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: haxelib v4.2.0
+      run: |
+        haxelib --global update haxelib
+
+    - name: Set up Haxe
+      uses: krdlab/setup-haxe@v1.5.1
+      with:
+        haxe-version: 4.3.6
+
+    - name: Install Haxelibs
+      run: |
+        haxelib --global install hmm
+        haxelib --global run hmm setup
+        hmm install
+
+    - name: Setup Android
+      run: |
+        haxelib run lime setup android
+
+    - name: Build Android APK
+      run: |
+        haxelib run lime build android -32
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: FlixelTest-APK
+        path: export/android/bin/bin/*.apk
