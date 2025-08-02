@@ -21,6 +21,7 @@
       "url": "https://github.com/openfl/lime.git"
       "ref": "master",
       "dir": null,
+    },
     {
       "name": "openfl",
       "type": "haxelib",
