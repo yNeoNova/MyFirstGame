@@ -27,6 +27,7 @@ jobs:
         haxelib --global install hmm
         haxelib --global run hmm setup
         hmm install
+        haxelib fixrepo --global
 
     - name: Setup Android
       run: |
