@@ -1,0 +1,38 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Haxe
+      uses: krdlab/setup-haxe@v1.5.1
+      with:
+        haxe-version: 4.3.6
+
+    - name: Install Haxelibs
+      run: |
+        haxelib git lime https://github.com/openfl/lime.git
+        haxelib install openfl 9.4.1
+        haxelib install flixel 6.1.0
+        haxelib install flixel-addons 3.3.2
+        haxelib install flixel-ui 2.6.4
+        haxelib run lime setup android
+
+    - name: Build Android APK
+      run: |
+        haxelib run lime build android -32
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: FlixelTest-APK
+        path: export/android/bin/bin/*.apk
