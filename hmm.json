@@ -1,0 +1,14 @@
+{
+  "dependencies": [
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": "6.1.0"
+    },
+    {
+      "name": "openfl",
+      "type": "haxelib",
+      "version": "9.4.1"
+    }
+  ]
+}

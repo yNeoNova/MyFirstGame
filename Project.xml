@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Flixel Test" version="1.0.0" company="com.devLeo.flixel">
+
+  <!-- App entry and output -->
+  <app main="Main" path="export/android/bin" file="flixelTest" />
+
+  <!-- Source and assets -->
+  <source path="source" />
+  <assets path="assets" />
+  <assets path="assets/fonts" rename="fonts" />
+
+  <!-- Haxelib dependencies -->
+  <haxelib name="openfl" />
+  <haxelib name="lime" />
+  <haxelib name="flixel" />
+
+  <!-- Icons -->
+  <icon path="setup/icons/icon16.png" size="16" />
+  <icon path="setup/icons/icon32.png" size="32" />
+  <icon path="setup/icons/icon64.png" size="64" />
+  <icon path="setup/icons/icon128.png" size="128" />
+  <icon path="setup/icons/icon256.png" size="256" />
+  <icon path="setup/icons/icon512.png" size="512" />
+  <icon path="setup/icons/iconOG.png" />
+
+  <!-- Platform-specific error -->
+  <error value="HTML5 isn't supported!" if="html5" />
+
+  <!-- Android SDK settings -->
+  <android target-sdk-version="33" minimum-sdk-version="19" if="android" />
+
+</project>
